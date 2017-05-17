@@ -15,16 +15,20 @@ function arrayToList(arr) {
 	return obj;
 }
 
+console.log("01 - Array to List:", arrayToList([10, 20]));
+
 /* --- */
 
 var list = arrayToList([10, 20, 30]);
 
+/**
+ * Convert a list to an array
+ * @param {Object} list - List
+ */
 function listToArray(list) {
 	var isFinish = false;
 	var obj = list;
 	var arr = [];
-
-	console.log(obj.rest.value);
 
 	while (!isFinish) {
 		arr.push(obj.value);
@@ -37,4 +41,30 @@ function listToArray(list) {
 	return arr;
 }
 
-console.log(listToArray(list));
+console.log("02 - List to Array:", listToArray(list));
+
+/* --- */
+
+/**
+ * Prepend the value to the list
+ * @param {Number} value - number to prepend
+ * @param {Object} list - list to which the function prepend the value
+ */
+function prepend(value, list) {
+  return { value: value, rest: list };
+}
+
+console.log("03 - Prepend a value to a list:", prepend(10, prepend(20, null)));
+
+/* --- */
+
+/**
+ * Return the value of the index on the list
+ * @param {Object} list - The list on which we want the value
+ * @param {Number} index - The desired index
+ */
+function nth(list, index) {
+  return index > 0 ? nth(list.rest, index - 1) : list.value;
+}
+
+console.log("04 - Nth:", nth(arrayToList([10, 20, 30]), 1));
